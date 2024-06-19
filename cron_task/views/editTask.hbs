@@ -1,0 +1,34 @@
+<div class="container">
+    <form action="/edit/{{id}}" method="POST">
+
+        <div class="form-group ">
+            <label class="form-label" for="leadName">Lead Name: </label>
+            <input class="form-control" id="leadName" type="text" placeholder="Lead Name" name="leadName" value="{{leadName}}" />
+        </div>
+        <div class="form-group ">
+            <label for="taskType" class="col-form-label">Task Type</label>
+            <select id="taskType" , name="taskType">
+                <option>Select Task Type</option>
+                {{#each taskList}}
+                <option value="{{this._id}}"{{#compare ../taskType.name '==' this.name}}selected{{/compare}}>{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group ">
+            <label for="description" class="col-form-label">Description</label>
+            <div>
+                <textarea id="description" name="description" cols="40" rows="5" required="required"
+                    class="form-control" value="{{description}}"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="form-label" for="taskDate">Task Date</label>
+            <input class="form-control" id="taskDate" type="datetime-local" placeholder="Task Date" name="taskDate" value="{{DateFormat taskDate}}" />
+        </div>
+        <button class="btn btn-primary btn-lg my-3" id="submitButton" type="submit"
+            onclick=alertFun("Added")>Submit</button>
+    </form>
+</div>
+<script>function alertFun(message) { alert(message) }</script>

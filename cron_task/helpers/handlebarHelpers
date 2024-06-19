@@ -1,0 +1,34 @@
+var Handlebars = require('handlebars')
+const moment = require('moment')
+const { v4: uuidv4 } = require('uuid')
+const {
+    allowInsecurePrototypeAccess
+} = require('@handlebars/allow-prototype-access');
+
+var helpers = require('handlebars-helpers')({
+    handlebars: Handlebars
+});
+
+let customHelper = {
+    debugger: function (val) {
+        console.log(val);
+    },
+    DateFormat: (value) => {//custom helper to format date
+        return moment(value).format('YYYY-MM-DD HH:MM') 
+        
+    }, 
+    concat: (val1, val2) => {
+        return val1 +" "+val2;
+    },
+
+}
+
+module.exports = {
+    defaultLayout: 'default',
+    extname: '.hbs',
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+    helpers: {
+        ...helpers,
+        ...customHelper
+    }
+}

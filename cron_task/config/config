@@ -1,0 +1,7 @@
+//database Config File
+module.exports = {
+    username: "mydb", 
+    password: "1234",
+    port: "27017",
+    dataBase:'mydb'
+}

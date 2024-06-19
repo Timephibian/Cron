@@ -1,0 +1,21 @@
+<table class="table table-bordered text-center">
+    <thead>
+        <td>Lead Name</td>
+        <td>Task Type</td>
+        <td>Description</td>
+        <td>Task Date</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </thead>
+    {{#each data}}
+    <tr>
+        <td>{{this.leadName}}</td>
+        <td>{{this.taskType.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.taskDate}}</td>
+        <td><a href=/edit/{{this._id}} class="border p-1 text-dark" style="text-decoration: none;">Edit</a></td>
+        <td><a href=/delete/{{this._id}} class="border p-1 text-dark bg-danger"
+                style="text-decoration: none;">Delete</a>
+    </tr>
+    {{/each}}
+</table>
